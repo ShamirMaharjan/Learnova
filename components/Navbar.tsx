@@ -19,7 +19,7 @@ const Navbar = () => {
                             height={40}
                             className="rounded-full"
                         />
-                        <span className="text-xl font-bold text-gray-800">Learnova</span>
+                        <span className="text-xl font-bold text-gray-800"></span>
                     </Link>
                 </div>
 
