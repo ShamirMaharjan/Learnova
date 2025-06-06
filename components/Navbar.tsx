@@ -1,36 +1,46 @@
-import Link from "next/link";
-import Image from "next/image";
-import Navitems from "./Navitems";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+"use client"
+
+import Link from "next/link"
+import Image from "next/image"
+import Navitems from "./Navitems"
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
-            <div className="flex items-center gap-2.5 cursor-pointer">
-                <Link href="/">
-                    <Image src="/favicon.ico" alt="logo" width={46} height={44}></Image>
-                </Link>
-            </div>
+        <div>
+            <nav className="w-full bg-white shadow-sm px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+                {/* Logo */}
+                <div className="flex items-center gap-3">
+                    <Link href="/" className="flex items-center gap-2">
+                        <Image
+                            src="/images/logo.png"
+                            alt="logo"
+                            width={40}
+                            height={40}
+                            className="rounded-full"
+                        />
+                        <span className="text-xl font-bold text-gray-800">Learnova</span>
+                    </Link>
+                </div>
 
-            <div className="flex items-center gap-8">
-                <Navitems />
-                <SignedOut>
+                {/* Navigation and Auth Buttons */}
+                <div className="flex items-center gap-6">
+                    <Navitems />
 
-                    <SignInButton>
-                        <button className="btn-signin">Sign In</button>
-                    </SignInButton>
+                    <SignedOut>
+                        <SignInButton>
+                            <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition">
+                                Sign In
+                            </button>
+                        </SignInButton>
+                    </SignedOut>
 
-
-                </SignedOut>
-                <SignedIn>
-
-                    <UserButton />
-
-                </SignedIn>
-
-            </div>
-
-        </nav>
+                    <SignedIn>
+                        <UserButton afterSignOutUrl="/" />
+                    </SignedIn>
+                </div>
+            </nav>
+        </div>
     )
 }
 
